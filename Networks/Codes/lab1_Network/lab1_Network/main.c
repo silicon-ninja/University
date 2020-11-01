@@ -3,7 +3,7 @@
 #include <string.h>
 
 // 1-D Parity
-
+// 17ETCS002124
 void oneD_Parity(char input[100],int choice){
 
     int count_1=0;
@@ -13,7 +13,6 @@ void oneD_Parity(char input[100],int choice){
             count_1++;
             }
         }
-
     switch (choice) {
         case 1:
             if (count_1%2==0) {
@@ -46,9 +45,11 @@ void oneD_Parity(char input[100],int choice){
     }
     }
 
-// 2-D Parity
 
-void twoD_Parity(char input[100][100],int choice,int rows,int columns){
+
+// 2-D Parity
+// 17ETCS002124
+void twoD_Parity(char input[100][100],int choice,int rows,long int columns){
     for (int i=0;i<rows;i++) {
         int count=0;
         for(int j=0;j<strlen(input[i]);j++){
@@ -65,8 +66,6 @@ void twoD_Parity(char input[100][100],int choice,int rows,int columns){
                     strcat(input[i],"1");
                     printf("The Even encoded data parity is %s \n",input[i]);
                     }
-               
-              
                 break;
             case 2:
                 if(count%2!=0) {
@@ -76,12 +75,10 @@ void twoD_Parity(char input[100][100],int choice,int rows,int columns){
                     strcat(input[i],"1");
                     printf("The Odd encoded data parity is %s \n",input[i]);
                     }
-                
                 break;
             default:
                 break;
         }
-        
     }
     for (int i=0; i<columns+1;i++) {
         int count =0;
@@ -111,7 +108,6 @@ void twoD_Parity(char input[100][100],int choice,int rows,int columns){
             default:
                 break;
         }
-        
     }
     switch (choice) {
         case 1:
@@ -129,34 +125,26 @@ void twoD_Parity(char input[100][100],int choice,int rows,int columns){
         default:
             break;
     }
-       
 }
-
 int main() {
     printf("K Srikanth 17ETCS002124\n");
     int choice2;
     char input[100];
     char input2[100][100];
     int choice;
-    int rows,columns;
+    int rows;
+    long int columns;
     while (1) {
-        printf("-------------------------\n");
-        
-        
-        
-        printf("Menu\n");
-        printf("-------------------------\n");
+    printf("-------------------------\n");
+    printf("Menu\n");
+    printf("-------------------------\n");
     printf("Press 1 for 1-D Parity \n");
     printf("Press 2 for 2-D Parity  \n");
     printf("Press 3 to Quit \n");
-        printf("-------------------------\n");
-        
+    printf("-------------------------\n");
     scanf("%d",&choice);
-
-   
         switch (choice) {
             case 1:
-               
                 printf("Enter the data in 0's and 1's : ");
                 scanf("%s",&input);
                 printf("Choose the method to encode the give data \n");
@@ -165,7 +153,6 @@ int main() {
                 scanf("%d",&choice2);
                 printf("\n");
                 oneD_Parity(input,choice2);
-                
                 break;
             case 2:
                 printf("Enter the Number of Rows : ");
@@ -181,21 +168,10 @@ int main() {
                 scanf("%d",&choice2);
                 printf("\n");
                 twoD_Parity(input2, choice2,rows, columns);
-                
                 break;
-
             case 3:
                 exit(0);
             default:
-                break;
-        }
-    }
-
-
+                break;}}
     return 0;
 }
-
-
-
-
-
