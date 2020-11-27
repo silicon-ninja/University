@@ -1,0 +1,8 @@
+-- create table manager(_ID int auto_increment, Name varchar(20),Department varchar(20),Address varchar(20),Salary VARCHAR(20),primary key (_ID));
+-- insert into manager(name,Department,address,salary) values ("Srikanth","CSE","Bangalore",1000000);
+-- create VIEW manager_view as SELECT _ID,Name,Department,Address,Salary from manager WHERE Name = "Srikanth";
+-- select _ID,Name,Department,Address,Salary from manager_view where Name = "Srikanth";
+-- UPDATE manager_view set name = "K Srikanth" where _ID = 1;
+-- select * from manager_view;
+-- select _ID,Name,Department,Address,Salary from manager_view where Name = "K Srikanth";
+-- select * from manager;
