@@ -6,3 +6,7 @@
 -- select * from manager_view;
 -- select _ID,Name,Department,Address,Salary from manager_view where Name = "K Srikanth";
 -- select * from manager;
+
+-- insert into manager(name,Department,address,salary) values ("Naveen GN","CSE","Bangalore",100000);
+-- insert into manager(name,Department,address,salary) values ("Sushanth","CSE","Bangalore",1000000);
+-- insert into manager(name,Department,address,salary) values ("Akansha","CSE","Bangalore",1000000);INSERT INTO manager (_ID, Name, Department, Address, Salary)
