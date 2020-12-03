@@ -6,7 +6,7 @@
 
 alphabet [a-zA-Z] // substitute definitions 
 digit [0-9] 
-underscore \_ 
+underscore _ 
 whitespace [ \t\r\f\v]+ 
 %x PREPROCESSING
 %x MULTILINECOMMENT 
@@ -28,6 +28,10 @@ whitespace [ \t\r\f\v]+
 "//" {BEGIN SINGLELINECOMMENT; printf("%10s SINGLELINECOMMENT\n",yytext); }
 <SINGLELINECOMMENT>\n {yylineno++; BEGIN INITIAL;} 
 <SINGLELINECOMMENT>. ; 
+
+
+
+\= {printf("%10s ASSIGNMENT OPERATOR\n",yytext);} 
 \+ {printf("%10s PLUS\n",yytext);} 
 \- {printf("%10s MINUS\n",yytext);} 
 \* {printf("%10s MULT\n",yytext);} 
@@ -56,16 +60,18 @@ break {printf("%10s BREAK STATEMENT\n",yytext);}
 int {printf("%10s INT DATATYPE\n",yytext);} 
 float {printf("%10s FLOAT DATATYPE\n",yytext);} 
 char {printf("%10s CHAR DATATYPE\n",yytext);} 
-";" {printf("%10s SEMICOLON\n",yytext);}
+; {printf("%10s SEMICOLON\n",yytext);}
+
+\".*\" {printf("%10s STRING_LITERAL\n",yytext);}
+[a-zA-Z][_a-zA-Z0-9]*  {printf("%10s VARIABLE IDENTIFIER\n",yytext);}
 [\(\)\{\}\,\[\]] {printf("%10s SEPARATOR\n",yytext);}
-
-
+('.') { printf("%10s CHAR_LITERAL\n",yytext);}
 
 {digit}+ { printf("%10s INT VALUE\n",yytext);} 
 {digit}+[\.]{digit}+ { printf("%10s FLOAT VALUE\n",yytext);} 
 
-
-
+\n ;
+{whitespace} ;
 . {printf("%10s CHAR_LITERAL\n",yytext);}  
 
 
@@ -77,7 +83,7 @@ int main()
     yyin = fopen("inputfile.c", "r"); 
     if(yyin==NULL) printf("\nError\n"); 
     else{  
-    printf("\nAm Lexing\n"); yylex();} 
+    printf("\Started Lexing\n"); printf("17ETCS002124 K Srikanth\n");yylex();} 
     fclose(yyin); 
     return 0; 
 }
