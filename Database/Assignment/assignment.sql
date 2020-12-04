@@ -85,7 +85,7 @@ insert into orders(user_ID,Product_ID) values (1,1);
 
 
 
-Table 5 Orders 
+Table 5 add_product
 
 create table add_product(
         Product_ID int,
@@ -144,4 +144,20 @@ Data Values for delete_product
 insert into delete_product(Product_ID,Admin_ID,Status) values (1,17002124,true);
 
 
-        
+
+
+
+
+
+
+
+
+Constraints 
+
+update user set Phone_Number = "GN "where Phone_Number = 7019462108;
+
+update add_product set status = Null where status = true;
+
+update orders set user_id = 7 where user_id = 1;
+
+update orders set order_id= null where order_id = 1;
