@@ -42,6 +42,7 @@ if __name__ == "__main__": # Main function
         print("******** Checksum ********")
         print("Press 1 to compute checksum at the transmitter.")
         print("Press 2 to receive data transmission from transmitter")
+        print("Press 3 to Exit")
         choice = int(input()) # Choice of input from the menu
         if choice==1: # if choice is 1 then Tramisit the given data
             print("****** Transmitter Console ******")
