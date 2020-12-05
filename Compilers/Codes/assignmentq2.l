@@ -80,7 +80,7 @@ int main()
     yyin = fopen("input.c", "r"); 
     if(yyin==NULL) printf("\nError\n"); 
     else{  
-    printf("\nAm Lexing\n"); yylex();} 
+    printf("\Started Tokenizing\n"); printf("17ETCS002124 K Srikanth\n");yylex();} 
     fclose(yyin); 
     return 0; 
 }
