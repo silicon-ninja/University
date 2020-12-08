@@ -1,3 +1,4 @@
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.Scanner;
 import java.sql.Connection;
@@ -7,7 +8,7 @@ public class Lab5b {
     Scanner input = new Scanner(System.in);
     Class.forName("com.mysql.cj.jdbc.Driver");  
     Connection con=DriverManager.getConnection(  
-    "jdbc:mysql://localhost:3306/lab_5","root","Sri123");  
+    "jdbc:mysql://localhost:3306/lab5b","root","Sri123");  
     Statement stmt=con.createStatement();
     while(true) {
     System.out.println("") ;  
@@ -22,23 +23,21 @@ public class Lab5b {
         // To Take input from user and store it in database
         case 1:
         System.out.println("") ;  
-        System.out.println("Enter the Name : ");
+        System.out.println("Enter the Manager Name : ");
         String Name = input.next();
-        System.out.println("Enter the Department : ");
-        String Department = input.next();
-        System.out.println("Enter the Address : ");
-        String Address = input.next();
-        System.out.println("Enter the Salary : ");
-        String Salary = input.next();
-        stmt.executeUpdate("insert into manager_table(Name,Department,Address,Salary) values("+"'"+Name+"'"+","+"'"+Department+"'"+","+"'"+Address+"'"+","+"'"+Salary+"'"+")");
+        System.out.println("Enter the Location : ");
+        String Location = input.next();
+        System.out.println("Enter the Phone Number  : ");
+        BigInteger PhoNumber= input.nextBigInteger();
+        stmt.executeUpdate("insert into manager(Manager_Name,Location,Phone_Number) values("+"'"+Name+"'"+","+"'"+Location+"'"+","+PhoNumber+")");
         break;
         // To print the manager_table in assending order 
         case 2:
         System.out.println("") ;  
         try{
-        ResultSet rs=stmt.executeQuery("select * from manager_table order by Name ASC");  
+        ResultSet rs=stmt.executeQuery("select * from manager order by Manager_Name ASC");  
         while(rs.next()) 
-        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+" "+rs.getString(5));  
+        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));  
         }catch(Exception e){ 
         System.out.println(e);}  
         break;
@@ -46,9 +45,9 @@ public class Lab5b {
         case 3:
         System.out.println("") ;  
         try{
-        ResultSet rs=stmt.executeQuery("select * from manager_table order by Name ASC");  
+        ResultSet rs=stmt.executeQuery("select location,count(*) from manager group by location;");  
         while(rs.next()) 
-        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+" "+rs.getString(5));  
+        System.out.println(rs.getString(1)+"  "+rs.getString(2));  
         }catch(Exception e){ 
         System.out.println(e);}  
         break;
@@ -56,9 +55,9 @@ public class Lab5b {
         case 4:
         System.out.println("") ;  
         try{
-        ResultSet rs=stmt.executeQuery("select * from manager_table order by Name ASC");  
+        ResultSet rs=stmt.executeQuery("select location,count(*) from manager group by location having count(*)> 3");  
         while(rs.next()) 
-        System.out.println(rs.getInt(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4)+" "+rs.getString(5));  
+        System.out.println(rs.getString(1)+"  "+rs.getString(2)); 
         }catch(Exception e){ 
         System.out.println(e);}  
         break;
