@@ -1,20 +1,15 @@
-// C program to demonstrate working of Semaphores 
 #include <stdio.h> 
 #include <pthread.h> 
 #include <semaphore.h> 
 #include <unistd.h> 
-
+// K Srikanth 17ETCS002124
 sem_t mutex; 
-
-void* helloworld(void* arg) 
-{ 
+void* helloworld(void* arg) { 
 	sem_wait(&mutex); 
 	printf("\nHello Srikanth......\n"); 
 	printf("\nBye Srikanth.....\n"); 
 	sem_post(&mutex); 
 } 
-
-
 int main() 
 { 
 	sem_init(&mutex, 0, 1); 
