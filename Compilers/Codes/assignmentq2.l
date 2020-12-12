@@ -3,7 +3,6 @@
     void yyerror(char *s);
 
 %} 
-
 alphabet [a-zA-Z] // substitute definitions 
 digit [0-9] 
 underscore \_ 
@@ -11,7 +10,6 @@ whitespace [ \t\r\f\v]+
 %x PREPROCESSING
 %x MULTILINECOMMENT 
 %x SINGLELINECOMMENT
-
 %% 
 <<EOF>> {exit(0);} 
 ^"#include" {BEGIN PREPROCESSING; printf("%10s PREPROCESSING\n",yytext); } 
@@ -28,9 +26,6 @@ whitespace [ \t\r\f\v]+
 "//" {BEGIN SINGLELINECOMMENT; printf("%10s SINGLELINECOMMENT\n",yytext); }
 <SINGLELINECOMMENT>\n {yylineno++; BEGIN INITIAL;} 
 <SINGLELINECOMMENT>. ; 
-
-
-
 \+ {printf("%10s PLUS\n",yytext);} 
 \- {printf("%10s MINUS\n",yytext);} 
 \* {printf("%10s MULT\n",yytext);} 
@@ -61,9 +56,8 @@ float {printf("%10s FLOAT DATATYPE\n",yytext);}
 char {printf("%10s CHAR DATATYPE\n",yytext);} 
 ";" {printf("%10s SEMICOLON\n",yytext);}
 [\(\)\{\}\,\[\]] {printf("%10s SEPARATOR\n",yytext);}
-
-
-
+\".*\" {printf("%s STRING LITERAL",yytext);}
+([_a-zA-Z]+[_a-zA-Z0-9]*) {printf("%10s VARIABLE\n",yytext);}
 {digit}+ { printf("%10s INT VALUE\n",yytext);} 
 {digit}+[\.]{digit}+ { printf("%10s FLOAT VALUE\n",yytext);} 
 
