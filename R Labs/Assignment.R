@@ -4,4 +4,4 @@ plot(data$Price,data$Number_Ordered)
 linmod = lm(data$Number_Ordered ~ data$Price)
 abline(data$Price ~ data$Number_Ordered)
 abline(linmod, col="blue")
-
+linmod
