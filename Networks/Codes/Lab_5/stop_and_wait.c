@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include<time.h>
-
+// K Srikanth 17ETCS002124
 int main(int argc, char** argv) {
     int nframes,i;
-    printf("How many frames? ");
+    printf("Enter the Number of Frames :");
     scanf("%d",&nframes);     
-    int sdata[nframes];      //SENDER SIDE BUFFER
-    int rdata[nframes];      //RECIEVER SIDE BUFFER
-    printf("Input the data to be transmitted ");
+    int sdata[nframes];      
+    int rdata[nframes];     
+    printf("Input the data to be transmitted \n");
     for(i=0;i<nframes;i++)
     {
         scanf("%d",&sdata[i]);
@@ -16,12 +16,12 @@ int main(int argc, char** argv) {
     for(i=0;i<nframes;i++)
     {
         printf("Frame %d has been sent.\n",i+1);
-        if(rand()%2==0)    //ACKNOWLEDGEMENT RECEIVED
+        if(rand()%2==0)    
         {
             rdata[i]=sdata[i];
             printf("Frame %d is successfully received.\n",i+1);
          }
-        else               //NO ACKNOWLEDGEMENT RECEIVED
+        else               
         {
             printf("Timed out! Initiating re-transmission.\n");
             i=i-1;
@@ -34,3 +34,4 @@ int main(int argc, char** argv) {
     }
     return (EXIT_SUCCESS);
 }
+
