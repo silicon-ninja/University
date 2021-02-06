@@ -1,5 +1,5 @@
 # College Labs 
-This Repository contains all the Labs and assignments from 5th Semester - . 
+This Repository contains all the Labs and assignments from 5th Semester - 8th Semester . 
 
 ### 5th Semester (Done)
 This Semester Contains Labs for,
