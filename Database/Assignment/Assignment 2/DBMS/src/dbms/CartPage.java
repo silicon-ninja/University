@@ -206,7 +206,7 @@ public class CartPage extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assignment", "root", "Sri123");
-            pst = con.prepareStatement("select * from #cart");
+            pst = con.prepareStatement("select * from cart");
             rs = pst.executeQuery();
             ResultSetMetaData rsd = rs.getMetaData();
             DefaultTableModel dft = (DefaultTableModel) Review_Table.getModel();
@@ -229,6 +229,7 @@ public class CartPage extends javax.swing.JFrame {
         }
     }
 
+    
 
     private void Purchase_ButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Purchase_ButtonActionPerformed
         // K Srikanth 17ETCS002124

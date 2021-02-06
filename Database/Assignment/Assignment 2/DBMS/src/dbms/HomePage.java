@@ -312,8 +312,9 @@ public class HomePage extends javax.swing.JFrame {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/assignment", "root", "Sri123");
             pst1 = con.createStatement();
-            String Cartquery = "Create TEMPORARY TABLE cart(Product_ID int NOT NULL,Product_Name VARCHAR (50) NOT NULL,Manufacturer VARCHAR (50) NOT NULL,Quantity int NOT NULL,Product_Price double(10,2) NOT NULL)";
-            pst = con.prepareStatement("insert into #cart values(?,?,?,?,?)");
+            String Cartquery = "Create TEMPORARY TABLE cart(Product_ID int NOT NULL,Product_Name VARCHAR (50) NOT NULL,"
+                    + "Manufacturer VARCHAR (50) NOT NULL,Quantity int NOT NULL,Product_Price double(10,2) NOT NULL)";
+            pst = con.prepareStatement("insert into cart values(?,?,?,?,?)");
             System.out.println(Product_ID);
             pst.setInt(1, Product_ID);
             pst.setString(2, Product_Name);
