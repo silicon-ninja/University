@@ -1,6 +1,0 @@
-Test Case 2
- 
-This Input Stream is to copy multiple lines of data 
-
-K Srikanth 
-17ETCS002124.
