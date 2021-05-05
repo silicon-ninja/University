@@ -10,7 +10,7 @@ public class client_UDP {
     /*
      * The server port to which the client socket is going to connect
      */
-    public final static int SERVICE_PORT = 50001;
+    public final static int SERVICE_PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         try {

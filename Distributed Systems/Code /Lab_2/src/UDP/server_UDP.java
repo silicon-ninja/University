@@ -8,7 +8,7 @@ import java.net.SocketException;
 
 public class server_UDP {
     // Server UDP socket runs at this port
-    public final static int SERVICE_PORT = 50001;
+    public final static int SERVICE_PORT = 8080;
 
     public static void main(String[] args) throws IOException {
         try {
