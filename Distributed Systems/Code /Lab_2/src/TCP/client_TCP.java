@@ -4,6 +4,7 @@ package TCP;
 import java.net.*;
 import java.io.*;
 
+// 17ETCS002124 K Srikanth
 public class client_TCP {
     // initialize socket and input output streams
     private Socket socket = null;

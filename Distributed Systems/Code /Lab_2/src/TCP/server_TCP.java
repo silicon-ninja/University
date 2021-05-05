@@ -1,7 +1,7 @@
 package TCP;
 
 import java.net.*;
-import java.io.*;
+import java.io.*;// 17ETCS002124 K Srikanth
 
 public class server_TCP {
     // initialize socket and input stream
@@ -26,7 +26,6 @@ public class server_TCP {
                 try {
                     line = in.readUTF();
                     System.out.println(line);
-
                 } catch (IOException i) {
                     System.out.println(i);
                 }
