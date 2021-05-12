@@ -1,37 +1,114 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lab3ds;
+package src;
 
 import java.util.*;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 
-public class Lab_3 {
+public class App {
+
+    static final int READER_SIZE = 10;
+    static final int WRITER_SIZE = 2;
+
     public static void main(String[] args) {
-        final ReadWriteLock readwriteLock = new ReentrantReadWriteLock();
-        final Lock writeLock = readwriteLock.writeLock();
-        final Lock readLock = readwriteLock.readLock();
-        int n = 10;
-        ArrayList<Integer> readerwriteList = new ArrayList<Integer>(n);
-        writeLock.lock();
+        Integer[] initialElements = { 33, 28, 86, 99 };
+
+        ReadWriteList<Integer> sharedList = new ReadWriteList<>(initialElements);
+
+        for (int i = 0; i < WRITER_SIZE; i++) {
+            new Writer(sharedList).start();
+        }
+
+        for (int i = 0; i < READER_SIZE; i++) {
+            new Reader(sharedList).start();
+        }
+
+    }
+}
+
+class Writer extends Thread {
+    private ReadWriteList<Integer> sharedList;
+
+    public Writer(ReadWriteList<Integer> sharedList) {
+        this.sharedList = sharedList;
+    }
+
+    public void run() {
+        Random random = new Random();
+        int number = random.nextInt(100);
+        sharedList.add(number);
+
         try {
-            for (int i = 0; i < 10; i++) {
-                readerwriteList.add(i);
-                System.out.println(readerwriteList);
-            }
+            Thread.sleep(100);
+            System.out.println(getName() + " -> put: " + number);
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
+    }
+}
+
+class Reader extends Thread {
+    private ReadWriteList<Integer> sharedList;
+
+    public Reader(ReadWriteList<Integer> sharedList) {
+        this.sharedList = sharedList;
+    }
+
+    public void run() {
+        Random random = new Random();
+        int index = random.nextInt(sharedList.size());
+        Integer number = sharedList.get(index);
+
+        System.out.println(getName() + " -> get: " + number);
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException ie) {
+            ie.printStackTrace();
+        }
+
+    }
+}
+
+class ReadWriteList<E> {
+    private List<E> list = new ArrayList<>();
+    private ReadWriteLock rwLock = new ReentrantReadWriteLock();
+
+    public ReadWriteList(E... initialElements) {
+        list.addAll(Arrays.asList(initialElements));
+    }
+
+    public void add(E element) {
+        Lock writeLock = rwLock.writeLock();
+        writeLock.lock();
+
+        try {
+            list.add(element);
         } finally {
             writeLock.unlock();
         }
-        System.out.println(readerwriteList);
+    }
+
+    public E get(int index) {
+        Lock readLock = rwLock.readLock();
         readLock.lock();
-        for (int i = 0; i < readerwriteList.size(); i++) {
-            System.out.println(readerwriteList.get(i) + "");
+
+        try {
+            return list.get(index);
+        } finally {
+            readLock.unlock();
         }
-        readLock.unlock();
+    }
+
+    public int size() {
+        Lock readLock = rwLock.readLock();
+        readLock.lock();
+
+        try {
+            return list.size();
+        } finally {
+            readLock.unlock();
+        }
     }
 
 }
