@@ -17,7 +17,6 @@ public class Lab_4 {
                 }
             }
         });
-
         Thread t2 = new Thread(new Runnable() {
             // K Srikanth 17ETCS002124
             @Override
@@ -49,11 +48,8 @@ public class Lab_4 {
                     while (list.size() == capacity)
                         wait();
                     System.out.println("Producer Produced Item => " + value);
-
                     list.add(value++);
-
                     notify();
-
                     Thread.sleep(1000);
                 }
             }
@@ -63,16 +59,11 @@ public class Lab_4 {
             // K Srikanth 17ETCS002124
             while (true) {
                 synchronized (this) {
-
                     while (list.size() == 0)
                         wait();
-
                     int val = list.removeFirst();
-
                     System.out.println("Consumer Just Consumed Item =>" + val);
-
                     notify();
-
                     Thread.sleep(1000);
                 }
             }
