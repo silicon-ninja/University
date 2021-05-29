@@ -9,8 +9,8 @@ public class Assignment_Server {
 	// 17ETCS002124 K Srikanth
 	public static void main(String args[]) throws IOException {
 
-		ServerSocket sockerobj = new ServerSocket(8080);
-		Socket soccon = sockerobj.accept();
+		ServerSocket socketobj = new ServerSocket(8080);
+		Socket soccon = socketobj.accept();
 		DataInputStream data_input_stream = new DataInputStream(soccon.getInputStream());
 		DataOutputStream data_output_stream = new DataOutputStream(soccon.getOutputStream());
 		System.out.println("");
