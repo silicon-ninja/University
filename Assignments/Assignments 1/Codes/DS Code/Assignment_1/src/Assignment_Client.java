@@ -6,8 +6,6 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Assignment_Client {
-
-	// 17ETCS002124 K Srikanth
 	public static void main(String[] args) throws IOException {
 		InetAddress ip_address = InetAddress.getLocalHost();
 		int port_num = 8080;

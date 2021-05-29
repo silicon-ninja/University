@@ -6,7 +6,6 @@ import java.net.Socket;
 import java.util.StringTokenizer;
 
 public class Assignment_Server {
-	// 17ETCS002124 K Srikanth
 	public static void main(String args[]) throws IOException {
 
 		ServerSocket socketobj = new ServerSocket(8080);
@@ -54,7 +53,7 @@ public class Assignment_Server {
 					break;
 				default:
 					System.out.println("Invalid Input Please Try Again");
-					// code block
+
 			}
 		}
 
