@@ -1,6 +1,6 @@
 from collections import defaultdict
 
-
+# 17ETCS002124 K Srikanth
 class Graph:
     def __init__(self, vertices):
         self.V = vertices
@@ -70,17 +70,15 @@ print("\n")
 print("******** 17ETS002124 K Srikanth ********")
 g1 = Graph(4)
 g1.addBridge(0, 1)
-g1.addBridge(0, 2)
 g1.addBridge(1, 2)
 g1.addBridge(2, 3)
-print("\n")
-print("******** this is the path ******** ")
+g1.addBridge(3, 0)
+g1.addBridge(0, 2)
 g1.printPath()
 
-g2 = Graph(3)
+g2 = Graph(4)
 g2.addBridge(0, 1)
 g2.addBridge(1, 2)
-g2.addBridge(2, 0)
-print("\n")
-print("******** this is the circuit ******** ")
+g2.addBridge(2, 3)
+g2.addBridge(3, 0)
 g2.printPath()
