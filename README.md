@@ -1,4 +1,4 @@
-# College Labs 
+# University
 This Repository contains all the Labs and assignments from 5th Semester - 8th Semester.
 Each Branch is a Semester.
 
