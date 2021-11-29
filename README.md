@@ -10,10 +10,16 @@ This Semester Contains Labs and assignments for,
 - Compilers 
 - Probability and Statistics 
 
-### 6th Semester 
+### 6th Semester (Done)
 This Semester Contains Labs and assignments for,
 - Distributed Cloud Computing 
 - Web Architechure 
 - Information Security and Protection 
 - Artificial Intelligence 
 - Graph Theory and Optimisation  
+
+### 7th Semester 
+This Semester Contains Labs and assignments for,
+- Computer Vision
+- Computational Intelligence 
+- Internet of Things
